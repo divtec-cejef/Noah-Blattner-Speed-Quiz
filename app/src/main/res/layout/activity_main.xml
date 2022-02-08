@@ -36,14 +36,15 @@
         />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout_player1"
         style="@style/Speed_Quiz.Edit"
-        android:id="@+id/edit_first_player"
         app:layout_constraintTop_toBottomOf="@id/main_button_edit_players"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/edit_player1">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_first_player"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -52,13 +53,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Speed_Quiz.Edit"
-        android:id="@+id/edit_second_player"
-        app:layout_constraintTop_toBottomOf="@id/edit_first_player"
+        android:id="@+id/input_layout_player2"
+        app:layout_constraintTop_toBottomOf="@id/input_layout_player1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/edit_player2">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_second_player"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -66,6 +68,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/main_button_play"
         style="@style/Speed_Quiz.Button.Filled"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
