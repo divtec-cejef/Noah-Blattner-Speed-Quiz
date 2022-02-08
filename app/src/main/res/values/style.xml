@@ -4,7 +4,6 @@
     <style name="Theme.SQ" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
     </style>
-
     <!-- Buttons -->
     <style name="Speed_Quiz.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:padding">@dimen/button_padding</item>

@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/blatnoa/AndroidStudioProjects/Speed_Quiz/app/src/main/res/drawable-anydpi/ic_night_mode.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/blatnoa/AndroidStudioProjects/Speed_Quiz/app/src/main/res/drawable-anydpi/ic_settings.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/blatnoa/AndroidStudioProjects/Speed_Quiz/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/blatnoa/AndroidStudioProjects/Speed_Quiz/app/src/main/res/menu-v26/main_menu.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/blatnoa/AndroidStudioProjects/Speed_Quiz/app/src/main/res/menu/main_menu.xml" value="0.20520833333333333" />
       </map>
     </option>

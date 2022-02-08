@@ -1,6 +1,6 @@
 <resources>
     <!--¨General -->
-    <string name="app_name">Speed_Quiz</string>
+    <string name="app_name">Speed Quiz</string>
 
     <!-- Menu -->
     <string name="main_menu_settings">Settings</string>
