@@ -3,6 +3,7 @@ package com.blatnoa.speed_quiz;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -62,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!player1Edit.getText().toString().isEmpty() && !player2Edit.getText().toString().isEmpty()) {
-                    //Intent intent = new Intent()
+                    Intent intent = new Intent(MainActivity.this, GameActivity.class);
+
                 }
             }
         });
@@ -70,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater =getMenuInflater();
+        MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.main_menu, menu);
         return true;
     }
