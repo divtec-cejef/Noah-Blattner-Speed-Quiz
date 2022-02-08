@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--¨Général -->
+    <string name="app_name">Speed_Quiz</string>
+
+    <!-- Page d'accueil -->
+    <string name="button_edit_players">Editer les joueurs</string>
+    <string name="button_start">Jouer !</string>
+    <string name="edit_player1">Nom du joueur 1</string>
+    <string name="edit_player2">Nom du joueur 2</string>
+</resources>

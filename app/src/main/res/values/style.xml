@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- General -->
+    <style name="Theme.SQ" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+    </style>
+
+    <!-- Buttons -->
+    <style name="Speed_Quiz.Button" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:padding">@dimen/button_padding</item>
+        <item name="android:layout_margin">@dimen/component_spacing</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+    </style>
+    <style name="Speed_Quiz.Button.Outlined" parent="Speed_Quiz.Button">
+        <item name="strokeColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+    <!-- Edit fields -->
+    <style name="Speed_Quiz.Edit" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_margin">@dimen/component_spacing</item>
+        <item name="android:textColorHint">@color/textColorPrimary</item>
+    </style>
+</resources>
