@@ -6,14 +6,19 @@
     </style>
 
     <!-- Buttons -->
-    <style name="Speed_Quiz.Button" parent="Widget.MaterialComponents.Button.OutlinedButton">
+    <style name="Speed_Quiz.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:padding">@dimen/button_padding</item>
         <item name="android:layout_margin">@dimen/component_spacing</item>
         <item name="android:textSize">@dimen/button_text_size</item>
-    </style>
-    <style name="Speed_Quiz.Button.Outlined" parent="Speed_Quiz.Button">
         <item name="strokeColor">@color/colorPrimary</item>
         <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+    <style name="Speed_Quiz.Button.Filled" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">@dimen/button_padding</item>
+        <item name="android:layout_margin">@dimen/component_spacing</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
     </style>
     <!-- Edit fields -->
     <style name="Speed_Quiz.Edit" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
