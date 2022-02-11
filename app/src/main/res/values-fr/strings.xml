@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--¨Général -->
+    <!-- Général -->
     <string name="app_name">Speed Quiz</string>
+    <string name="Placeholder">Placeholder</string>
+    <string name="Placeholder_number">0</string>
 
     <!-- Menu -->
     <string name="main_menu_settings">Paramètres</string>
@@ -14,6 +16,11 @@
     <string name="edit_player1">Nom du joueur 1</string>
     <string name="edit_player2">Nom du joueur 2</string>
     <string name="player_error_message">Noms des joueurs ne peuvent pas être vide</string>
+
+    <!-- Jeu -->
+    <string name="game_button_answer">C\'est vrai !</string>
+    <string name="game_button_stop_game">Arreter le jeu</string>
+    <string name="game_button_replay">Replay</string>
     
     <!-- Paramètres -->
     <string name="settings_title">Paramètres</string>

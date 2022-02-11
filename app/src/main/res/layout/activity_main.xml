@@ -165,6 +165,8 @@
             android:stepSize="0.25"
             app:layout_constraintTop_toBottomOf="@id/settings_display_time"/>
 
+        <Te
+
         <Button
             android:id="@+id/settings_leave_settings"
             android:layout_width="wrap_content"

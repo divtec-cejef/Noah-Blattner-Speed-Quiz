@@ -1,6 +1,8 @@
 <resources>
     <!--¨General -->
     <string name="app_name">Speed Quiz</string>
+    <string name="Placeholder">Placeholder</string>
+    <string name="Placeholder_number">0</string>
 
     <!-- Menu -->
     <string name="main_menu_settings">Settings</string>
@@ -13,6 +15,11 @@
     <string name="edit_player1">Name of player 1</string>
     <string name="edit_player2">Name of player 2</string>
     <string name="player_error_message">Player names can\'t be empty</string>
+
+    <!-- Game -->
+    <string name="game_button_answer">It\'s true !</string>
+    <string name="game_button_stop_game">Stop game</string>
+    <string name="game_button_replay">Replay</string>
 
     <!-- Settings -->
     <string name="settings_title">Settings</string>
