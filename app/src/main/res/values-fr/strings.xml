@@ -6,6 +6,7 @@
     <!-- Menu -->
     <string name="main_menu_settings">Paramètres</string>
     <string name="main_menu_night_mode">Mode nuit</string>
+    <string name="setting_leave_settings">Quitter les paramètres</string>
 
     <!-- Page d'accueil -->
     <string name="button_edit_players">Editer les joueurs</string>

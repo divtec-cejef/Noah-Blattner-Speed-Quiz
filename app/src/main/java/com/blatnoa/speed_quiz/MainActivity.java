@@ -13,17 +13,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button editPlayersButton;
     private Button playButton;
+    private Button leaveSettingsButton;
     private TextInputLayout player1InputLayout;
     private TextInputLayout player2InputLayout;
     private EditText player1Edit;
     private EditText player2Edit;
-
     ConstraintLayout settingsOverlay;
 
     @Override
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         editPlayersButton = findViewById(R.id.main_button_edit_players);
         playButton = findViewById(R.id.main_button_play);
+        leaveSettingsButton = findViewById(R.id.settings_leave_settings);
 
         player1InputLayout = findViewById(R.id.input_layout_player1);
         player1InputLayout.setVisibility(View.INVISIBLE);
