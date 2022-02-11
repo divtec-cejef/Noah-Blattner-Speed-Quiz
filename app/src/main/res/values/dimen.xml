@@ -7,7 +7,7 @@
     <!-- Text -->
     <dimen name="text_h1">26sp</dimen>
     <dimen name="text_h2">22sp</dimen>
-    <dimen name="text_h3">16sp</dimen>
+    <dimen name="text_h3">18sp</dimen>
     <!-- Settings -->
     <dimen name="options_start_margin">12dp</dimen>
 </resources>

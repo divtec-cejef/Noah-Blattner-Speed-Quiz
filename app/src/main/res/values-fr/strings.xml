@@ -13,6 +13,7 @@
     <string name="button_start">Jouer !</string>
     <string name="edit_player1">Nom du joueur 1</string>
     <string name="edit_player2">Nom du joueur 2</string>
+    <string name="player_error_message">Noms des joueurs ne peuvent pas être vide</string>
     
     <!-- Paramètres -->
     <string name="settings_title">Paramètres</string>

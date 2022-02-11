@@ -11,7 +11,8 @@
     <string name="button_edit_players">Edit players</string>
     <string name="button_start">Play !</string>
     <string name="edit_player1">Name of player 1</string>
-    <string name="edit_player2">Name of player 2</string>$
+    <string name="edit_player2">Name of player 2</string>
+    <string name="player_error_message">Player names can\'t be empty</string>
 
     <!-- Settings -->
     <string name="settings_title">Settings</string>

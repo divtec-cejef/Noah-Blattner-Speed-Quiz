@@ -1,5 +1,6 @@
 package com.blatnoa.speed_quiz;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -12,8 +13,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.slider.LabelFormatter;
+import com.google.android.material.slider.Slider;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Button editPlayersButton;
     private Button playButton;
     private Button leaveSettingsButton;
+    private Slider displayTimeSlider;
     private TextInputLayout player1InputLayout;
     private TextInputLayout player2InputLayout;
     private EditText player1Edit;
@@ -37,6 +43,15 @@ public class MainActivity extends AppCompatActivity {
 
         settingsOverlay = findViewById(R.id.settings_overlay);
         settingsOverlay.setVisibility(View.GONE);
+
+        displayTimeSlider = findViewById(R.id.settings_display_time_slider);
+        displayTimeSlider.setLabelFormatter(new LabelFormatter() {
+            @NonNull
+            @Override
+            public String getFormattedValue(float value) {
+                return Float.toString(value) + "s";
+            }
+        });
 
         editPlayersButton = findViewById(R.id.main_button_edit_players);
         playButton = findViewById(R.id.main_button_play);
@@ -73,8 +88,21 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!player1Edit.getText().toString().isEmpty() && !player2Edit.getText().toString().isEmpty()) {
                     Intent intent = new Intent(MainActivity.this, GameActivity.class);
-
+                    intent.putExtra("Player1", player1Edit.getText());
+                    intent.putExtra("Player2", player2Edit.getText());
+                    intent.putExtra("DisplayTime", displayTimeSlider.getValue());
+                    startActivity(intent);
+                } else {
+                    RelativeLayout contextView = findViewById(R.id.main_layout);
+                    Snackbar.make(contextView, getString(R.string.player_error_message), Snackbar.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        leaveSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                settingsOverlay.setVisibility(View.GONE);
             }
         });
     }
