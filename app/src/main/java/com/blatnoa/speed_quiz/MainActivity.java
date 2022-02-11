@@ -2,11 +2,13 @@ package com.blatnoa.speed_quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText player1Edit;
     private EditText player2Edit;
 
+    ConstraintLayout settingsOverlay;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar mainToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);
+
+        settingsOverlay = findViewById(R.id.settings_overlay);
+        settingsOverlay.setVisibility(View.GONE);
 
         editPlayersButton = findViewById(R.id.main_button_edit_players);
         playButton = findViewById(R.id.main_button_play);
@@ -76,4 +83,21 @@ public class MainActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.main_menu, menu);
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.main_action_settings:
+                settingsOverlay.setVisibility(View.VISIBLE);
+                break;
+            case R.id.main_action_night_mode:
+                break;
+            default:
+                super.onOptionsItemSelected(item);
+        }
+
+        return true;
+    }
+
+
 }

@@ -12,4 +12,11 @@
     <string name="button_start">Jouer !</string>
     <string name="edit_player1">Nom du joueur 1</string>
     <string name="edit_player2">Nom du joueur 2</string>
+    
+    <!-- Paramètres -->
+    <string name="settings_title">Paramètres</string>
+    <string name="settings_app_settings">Paramètres de l\'application</string>
+    <string name="settings_app_night_mode">Mode nuit :</string>
+    <string name="settings_game_settings">Paramètres de jeu</string>
+    <string name="settings_question_time">Temps d\'affichage des questions :</string>
 </resources>

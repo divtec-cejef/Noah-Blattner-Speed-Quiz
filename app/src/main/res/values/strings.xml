@@ -10,5 +10,12 @@
     <string name="button_edit_players">Edit players</string>
     <string name="button_start">Play !</string>
     <string name="edit_player1">Name of player 1</string>
-    <string name="edit_player2">Name of player 2</string>
+    <string name="edit_player2">Name of player 2</string>$
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_app_settings">App settings</string>
+    <string name="settings_app_night_mode">Night mode :</string>
+    <string name="settings_game_settings">Game settings</string>
+    <string name="settings_question_time">Question display time :</string>
 </resources>
