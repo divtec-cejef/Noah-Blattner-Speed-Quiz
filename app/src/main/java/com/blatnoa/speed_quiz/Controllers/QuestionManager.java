@@ -28,4 +28,14 @@ public class QuestionManager {
         return randomQuestion;
     }
 
+    /**
+     * Test if the given answer is the correct answer for the given question
+     * @param question The asked question
+     * @param answer The given answer to the question
+     * @return If the answer is correct or not
+     */
+    public static boolean isCorrectAnswer(Question question, int answer) {
+        return question.getAnswer() == answer;
+    }
+
 }
