@@ -27,11 +27,14 @@ public class MainActivity extends AppCompatActivity {
     private Button playButton;
     private Button leaveSettingsButton;
     private Slider displayTimeSlider;
+    private EditText winRequirement;
     private TextInputLayout player1InputLayout;
     private TextInputLayout player2InputLayout;
     private EditText player1Edit;
     private EditText player2Edit;
     ConstraintLayout settingsOverlay;
+
+    private final int BASE_WIN_REQUIREMENT = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
                 return Float.toString(value) + "s";
             }
         });
+        winRequirement = findViewById(R.id.settings_win_requirement_edit);
+        winRequirement.setText(Integer.toString(BASE_WIN_REQUIREMENT));
 
         editPlayersButton = findViewById(R.id.main_button_edit_players);
         playButton = findViewById(R.id.main_button_play);
@@ -91,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("Player1", player1Edit.getText());
                     intent.putExtra("Player2", player2Edit.getText());
                     intent.putExtra("DisplayTime", displayTimeSlider.getValue());
+                    intent.putExtra("WinRequirement", Integer.parseInt(winRequirement.getText().toString()));
                     startActivity(intent);
                 } else {
                     RelativeLayout contextView = findViewById(R.id.main_layout);
