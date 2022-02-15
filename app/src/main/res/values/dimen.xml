@@ -3,7 +3,7 @@
     <!-- General -->
     <dimen name="component_spacing">6dp</dimen>
     <dimen name="button_padding">5dp</dimen>
-    <dimen name="button_text_size">15sp</dimen>
+    <dimen name="button_text_size">14sp</dimen>
     <!-- Text -->
     <dimen name="bigText">236sp</dimen>
     <dimen name="text_h1">26sp</dimen>

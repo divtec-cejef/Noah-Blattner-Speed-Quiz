@@ -27,5 +27,7 @@
     <string name="settings_app_settings">Paramètres de l\'application</string>
     <string name="settings_app_night_mode">Mode nuit :</string>
     <string name="settings_game_settings">Paramètres de jeu</string>
+    <string name="settings_win_requirement">Condition de victoire :</string>
+    <string name="settings_win_requirement_hint">Réponses correct</string>
     <string name="settings_question_time">Temps d\'affichage des questions :</string>
 </resources>
