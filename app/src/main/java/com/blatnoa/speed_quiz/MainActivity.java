@@ -93,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!player1Edit.getText().toString().isEmpty() && !player2Edit.getText().toString().isEmpty()) {
                     Intent intent = new Intent(MainActivity.this, GameActivity.class);
-                    intent.putExtra("Player1", player1Edit.getText());
-                    intent.putExtra("Player2", player2Edit.getText());
+                    intent.putExtra("Player1", player1Edit.getText().toString());
+                    intent.putExtra("Player2", player2Edit.getText().toString());
                     intent.putExtra("DisplayTime", displayTimeSlider.getValue());
                     intent.putExtra("WinRequirement", Integer.parseInt(winRequirement.getText().toString()));
                     startActivity(intent);

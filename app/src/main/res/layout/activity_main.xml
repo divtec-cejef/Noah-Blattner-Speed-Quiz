@@ -157,7 +157,7 @@
             android:layout_height="wrap_content"
             android:stepSize="0.25"
             android:value="3"
-            android:valueFrom="0.5"
+            android:valueFrom="1"
             android:valueTo="5"
             app:layout_constraintTop_toBottomOf="@id/settings_display_time" />
 

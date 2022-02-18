@@ -22,6 +22,8 @@ public class GameActivity extends AppCompatActivity {
     private ConstraintLayout winnerOverlay;
     private TextView player1Name;
     private TextView player2Name;
+    private TextView player1ScoreText;
+    private TextView player2ScoreText;
     private TextView player1Question;
     private TextView player2Question;
     private TextView gameWinner;
@@ -63,6 +65,8 @@ public class GameActivity extends AppCompatActivity {
 
         player1Name = findViewById(R.id.game_name_player1);
         player2Name = findViewById(R.id.game_name_player2);
+        player1ScoreText = findViewById(R.id.game_points_player1);
+        player2ScoreText = findViewById(R.id.game_points_player2);
         player1Question = findViewById(R.id.game_question_player1);
         player1Question.setText("");
         player2Question = findViewById(R.id.game_question_player2);
@@ -104,7 +108,7 @@ public class GameActivity extends AppCompatActivity {
                     // Remove 1 point
                     player1Score--;
                 }
-
+                player1ScoreText.setText(Integer.toString(player1Score));
             }
         });
 
@@ -123,6 +127,7 @@ public class GameActivity extends AppCompatActivity {
                     // Remove 1 point
                     player2Score--;
                 }
+                player2ScoreText.setText(Integer.toString(player2Score));
             }
         });
 
