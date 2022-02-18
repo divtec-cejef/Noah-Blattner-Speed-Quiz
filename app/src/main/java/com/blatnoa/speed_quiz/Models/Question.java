@@ -16,7 +16,7 @@ public class Question {
      * @param question The question String
      * @param answer The answer to the question
      */
-    Question(String question, int answer) {
+    public Question(String question, int answer) {
         // Verify question
         if (!question.isEmpty()) {
             this.question = question;

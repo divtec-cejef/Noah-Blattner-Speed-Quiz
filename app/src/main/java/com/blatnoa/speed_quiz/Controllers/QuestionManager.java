@@ -1,5 +1,7 @@
 package com.blatnoa.speed_quiz.Controllers;
 
+import android.util.Log;
+
 import com.blatnoa.speed_quiz.Models.Question;
 
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ public class QuestionManager {
     /**
      * Constructor to instantiate a question manager
      */
-    QuestionManager() {
+    public QuestionManager() {
         randomQuestions = (ArrayList<Question>)allQuestions.clone();
     }
 
@@ -29,18 +31,22 @@ public class QuestionManager {
      * @return A random question
      */
     public Question getRandomQuestion() {
-        int randIndex = (int)(Math.random()*(randomQuestions.size()-1));
-        Question randomQuestion = randomQuestions.get(randIndex);
-        randomQuestions.remove(randIndex);
-        return randomQuestion;
+        if (anyQuestionsRemaining()) {
+            int randIndex = (int) (Math.random() * (randomQuestions.size() - 1));
+            Question randomQuestion = randomQuestions.get(randIndex);
+            randomQuestions.remove(randomQuestion);
+            return randomQuestion;
+        } else {
+            return null;
+        }
     }
 
     /**
-     * Check if there are any random questions left
-     * @return true if there aren't any questions left
+     * Check if there are any random questions remaining
+     * @return true if there are any questions remaining
      */
-    public boolean isLastQuestion() {
-        return randomQuestions.size() == 0;
+    public boolean anyQuestionsRemaining() {
+        return randomQuestions.size() > 0;
     }
 
     /**
