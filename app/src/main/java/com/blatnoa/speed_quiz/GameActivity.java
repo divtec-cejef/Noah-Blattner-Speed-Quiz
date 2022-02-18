@@ -50,10 +50,16 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         // Test questions
-        new Question("Est-ce un jeudi aujourd'hui", 0);
-        new Question("L'atterisage lunaire à eu lieu en 1966", 0);
-        new Question("AZERTY est un bon layout de clavier", 0);
-        new Question("La première guerre mondial à durée de 1914 à 1918", 1);
+        new Question("L'anglais est la langue la plus utilisé au monde.", 0);
+        new Question("La distance Terre-Soleil est d'environ 150 mille kilomètres", 0);
+        new Question("Le diamètre de la Terre est d'environ 12'000 kilomètres", 1);
+        new Question("Freddie Mercury s'appelait Farrokh Bulsara lors de sa naissance.", 1);
+        new Question("John f. Kennedy s'est fait assasiner le 22 novembre 1963.", 1);
+        new Question("Horizon Forbidden West est développé par Guerilla.", 1);
+        new Question("Le temps UNIX atteindra sa limite en 2038.", 1);
+        new Question("L'atterisage lunaire à eu lieu en 1966.", 0);
+        new Question("AZERTY est un bon layout de clavier.", 0);
+        new Question("La première guerre mondial à durée de 1914 à 1918.", 1);
 
         // Set to full screen
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -184,6 +190,9 @@ public class GameActivity extends AppCompatActivity {
         player1Question.setText("");
         player2Question.setText("");
 
+        player1ScoreText.setText("0");
+        player2ScoreText.setText("0");
+
         buttonsSetEnabled(false);
 
         winnerOverlay.setVisibility(View.GONE);
@@ -205,8 +214,8 @@ public class GameActivity extends AppCompatActivity {
                 // Empty text in question fields
                 player1Question.setText("");
                 player2Question.setText("");
-                // Start next question with random delay
-                int randTimeMS = (int)(Math.random() * 10000);
+                // Start next question with random delay between 1 and 5 seconds
+                int randTimeMS = (int)(Math.random() * 4000 + 1000);
                 handler.postDelayed(questionRunnable, randTimeMS);
             }
         };
