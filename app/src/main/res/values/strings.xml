@@ -19,6 +19,11 @@
     <string name="game_button_answer">It\'s true !</string>
     <string name="game_button_stop_game">Stop game</string>
     <string name="game_button_replay">Replay</string>
+    <string name="game_winner_title">The winner is :</string>
+    <string name="game_menu">Return to menu</string>
+    <string name="game_draw">Draw. Both players scored the same points</string>
+    <string name="game_abandon_match">Are you sure you want to abandon this match ?</string>
+    <string name="game_confirm">Yes</string>
 
     <!-- Settings -->
     <string name="settings_title">Settings</string>

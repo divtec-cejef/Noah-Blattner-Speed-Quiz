@@ -6,7 +6,8 @@
     <dimen name="button_text_size">14sp</dimen>
     <!-- Text -->
     <dimen name="bigText">236sp</dimen>
-    <dimen name="mediumText">120sp</dimen>
+    <dimen name="mediumText">56sp</dimen>
+    <dimen name="mediumSmallText">42sp</dimen>
     <dimen name="text_h1">26sp</dimen>
     <dimen name="text_h2">22sp</dimen>
     <dimen name="text_h3">18sp</dimen>
