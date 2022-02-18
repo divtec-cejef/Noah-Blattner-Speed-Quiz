@@ -3,6 +3,7 @@ package com.blatnoa.speed_quiz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -19,13 +20,13 @@ public class GameActivity extends AppCompatActivity {
     private TextView player2Name;
     private TextView player1Question;
     private TextView player2Question;
-    private TextView countdown;
     private Button player1AnswerButton;
     private Button player2AnswerButton;
     private Button stopGameButton;
     private Button replayButton;
 
     private Bundle extras;
+    private Runnable questionRunnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,6 @@ public class GameActivity extends AppCompatActivity {
         player2Name = findViewById(R.id.game_name_player2);
         player1Question = findViewById(R.id.game_question_player1);
         player2Question = findViewById(R.id.game_question_player2);
-        countdown = findViewById(R.id.game_countdown);
 
         player1AnswerButton = findViewById(R.id.game_button_player1);
         player2AnswerButton = findViewById(R.id.game_button_player2);
@@ -68,9 +68,25 @@ public class GameActivity extends AppCompatActivity {
 
             }
         });
+
+        game();
     }
 
     private void game() {
 
     }
+
+    private void showNextQuestion() {
+        Handler handler = new Handler();
+
+        questionRunnable = new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        };
+
+    }
+
+
 }
