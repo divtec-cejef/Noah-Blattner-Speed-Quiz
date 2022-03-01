@@ -1,5 +1,6 @@
 package com.blatnoa.speed_quiz.Models;
 
+import android.database.Cursor;
 import android.util.Log;
 
 import com.blatnoa.speed_quiz.Controllers.QuestionManager;
@@ -13,25 +14,11 @@ public class Question {
 
     /**
      * Constructor to instantiate a question
-     * @param question The question String
-     * @param answer The answer to the question
+     * @param cursor The cursor of the question
      */
-    public Question(String question, int answer) {
-        // Verify question
-        if (!question.isEmpty()) {
-            this.question = question;
-
-            // Verify answer
-            if (answer == 0 || answer == 1) {
-                this.answer = answer;
-                QuestionManager.addQuestion(this);
-            } else {
-                Log.e("Question", "Answer can only be True (1) or False (0)");
-            }
-        } else {
-            Log.e("Question", "Question cannot be empty");
-        }
-
+    public Question(Cursor cursor){
+        question = cursor.getString(cursor.getColumnIndex("question"));
+        answer = cursor.getInt(cursor.getColumnIndex("reponse"));
     }
 
     /**

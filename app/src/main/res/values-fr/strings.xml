@@ -34,5 +34,13 @@
     <string name="settings_game_settings">Paramètres de jeu</string>
     <string name="settings_win_requirement">Condition de victoire :</string>
     <string name="settings_win_requirement_hint">Réponses correct</string>
+    <string name="settings_add_question">Ajouter une question :</string>
+    <string name="settings_add_question_button_text">Clicker pour ajouter une question</string>
     <string name="settings_question_time">Temps d\'affichage des questions :</string>
+
+    <!-- Add question popup -->
+    <string name="popup_question_text">Text de la question</string>
+    <string name="popup_question_answer">Réponse est vrai</string>
+    <string name="popup_confirm_question">Confirm and add question</string>
+    <string name="popup_exit">Abandonner et quitter</string>
 </resources>

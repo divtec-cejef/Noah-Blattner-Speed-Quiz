@@ -33,5 +33,13 @@
     <string name="settings_question_time">Question display time :</string>
     <string name="settings_win_requirement">Win requirement :</string>
     <string name="settings_win_requirement_hint">Correct answers</string>
+    <string name="settings_add_question">Add a question :</string>
+    <string name="settings_add_question_button_text">Click to add a question</string>
     <string name="setting_leave_settings">Leave settings</string>
+
+    <!-- Add question popup -->
+    <string name="popup_question_text">Question text</string>
+    <string name="popup_question_answer">Answer is true</string>
+    <string name="popup_confirm_question">Confirm and add question</string>
+    <string name="popup_exit">Abandon and exit</string>
 </resources>

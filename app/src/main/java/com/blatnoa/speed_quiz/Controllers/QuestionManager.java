@@ -1,29 +1,54 @@
 package com.blatnoa.speed_quiz.Controllers;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.blatnoa.speed_quiz.Models.Question;
+import com.blatnoa.speed_quiz.Models.SpeedQuizSQLiteOpenHelper;
 
 import java.util.ArrayList;
 
 public class QuestionManager {
 
-    private static ArrayList<Question> allQuestions = new ArrayList<>();
-    private ArrayList<Question> randomQuestions = new ArrayList<>();
+    private ArrayList<Question> questionList = new ArrayList<>();
+    private SpeedQuizSQLiteOpenHelper helper;
 
     /**
-     * Constructor to instantiate a question manager
+     * Class constructor to create a new instance of QuestionManager
+     * @param context App context
      */
-    public QuestionManager() {
-        randomQuestions = (ArrayList<Question>)allQuestions.clone();
+    public QuestionManager(Context context)
+    {
+        helper = new SpeedQuizSQLiteOpenHelper(context);
+        questionList = initQuestionList();
     }
 
     /**
-     * Add question to list of all questions
-     * @param question The question to add
+     * Loads a list from de DB
+     * @return A arraylist of questions
      */
-    public static void addQuestion(Question question) {
-        allQuestions.add(question);
+    private ArrayList<Question> initQuestionList(){
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor cursor = db.query(true,"quiz",new String[]{"idQuiz","question","reponse"},null,null,null,null,"idquiz",null);
+
+        ArrayList<Question> listQuestion = new ArrayList<>();
+        while(cursor.moveToNext()){
+            listQuestion.add(new Question(cursor));
+        }
+        cursor.close();
+        db.close();
+        return listQuestion;
+    }
+
+    /**
+     * Add a question to the database
+     * @param questionText The question's text
+     * @param answer The question's answer
+     */
+    public void addQuestion(String questionText, boolean answer) {
+        helper.addQuestionToQuiz(questionText, answer);
     }
 
     /**
@@ -32,9 +57,9 @@ public class QuestionManager {
      */
     public Question getRandomQuestion() {
         if (anyQuestionsRemaining()) {
-            int randIndex = (int) (Math.random() * (randomQuestions.size() - 1));
-            Question randomQuestion = randomQuestions.get(randIndex);
-            randomQuestions.remove(randomQuestion);
+            int randIndex = (int) (Math.random() * (questionList.size() - 1));
+            Question randomQuestion = questionList.get(randIndex);
+            questionList.remove(randomQuestion);
             return randomQuestion;
         } else {
             return null;
@@ -46,7 +71,7 @@ public class QuestionManager {
      * @return true if there are any questions remaining
      */
     public boolean anyQuestionsRemaining() {
-        return randomQuestions.size() > 0;
+        return questionList.size() > 0;
     }
 
     /**

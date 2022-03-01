@@ -2,6 +2,7 @@ package com.blatnoa.speed_quiz;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -14,8 +15,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 
-import com.google.android.material.appbar.AppBarLayout;
+import com.blatnoa.speed_quiz.Controllers.QuestionManager;
 import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.Slider;
 import com.google.android.material.snackbar.Snackbar;
@@ -26,13 +28,19 @@ public class MainActivity extends AppCompatActivity {
     private Button editPlayersButton;
     private Button playButton;
     private Button leaveSettingsButton;
+    private Button addQuestionButton;
+    private Button confirmQuestionButton;
+    private Button abandonQuestionButton;
     private Slider displayTimeSlider;
     private EditText winRequirement;
+    private EditText questionText;
+    private SwitchCompat questionAnswer;
     private TextInputLayout player1InputLayout;
     private TextInputLayout player2InputLayout;
     private EditText player1Edit;
     private EditText player2Edit;
     ConstraintLayout settingsOverlay;
+    ConstraintLayout addQuestionPopup;
 
     private final int BASE_WIN_REQUIREMENT = 5;
 
@@ -47,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
         settingsOverlay = findViewById(R.id.settings_overlay);
         settingsOverlay.setVisibility(View.GONE);
 
+        addQuestionPopup = findViewById(R.id.popup_add_question);
+        addQuestionPopup.setVisibility(View.GONE);
+
+        questionAnswer = findViewById(R.id.popup_question_answer_switch);
+
         displayTimeSlider = findViewById(R.id.settings_display_time_slider);
         displayTimeSlider.setLabelFormatter(new LabelFormatter() {
             @NonNull
@@ -57,10 +70,14 @@ public class MainActivity extends AppCompatActivity {
         });
         winRequirement = findViewById(R.id.settings_win_requirement_edit);
         winRequirement.setText(Integer.toString(BASE_WIN_REQUIREMENT));
+        questionText = findViewById(R.id.popup_question_text_edit);
 
         editPlayersButton = findViewById(R.id.main_button_edit_players);
         playButton = findViewById(R.id.main_button_play);
         leaveSettingsButton = findViewById(R.id.settings_leave_settings);
+        addQuestionButton = findViewById(R.id.settings_add_question_button);
+        confirmQuestionButton = findViewById(R.id.popup_add_question_confirm_button);
+        abandonQuestionButton = findViewById(R.id.popup_exit_button);
 
         player1InputLayout = findViewById(R.id.input_layout_player1);
         player1InputLayout.setVisibility(View.INVISIBLE);
@@ -102,6 +119,31 @@ public class MainActivity extends AppCompatActivity {
                     RelativeLayout contextView = findViewById(R.id.main_layout);
                     Snackbar.make(contextView, getString(R.string.player_error_message), Snackbar.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        addQuestionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addQuestionPopup.setVisibility(View.VISIBLE);
+            }
+        });
+
+        confirmQuestionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                QuestionManager qm = new QuestionManager(MainActivity.this);
+                qm.addQuestion(questionText.getText().toString(), questionAnswer.isChecked());
+                addQuestionPopup.setVisibility(View.GONE);
+            }
+        });
+
+        abandonQuestionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                questionText.setText("");
+                questionAnswer.setChecked(false);
+                addQuestionPopup.setVisibility(View.GONE);
             }
         });
 

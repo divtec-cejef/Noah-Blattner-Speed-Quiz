@@ -13,4 +13,5 @@
     <dimen name="text_h3">18sp</dimen>
     <!-- Settings -->
     <dimen name="options_start_margin">12dp</dimen>
+    <dimen name="title_spacing">55dp</dimen>
 </resources>
