@@ -149,7 +149,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gameInitialization();
-                questionCycle();
+                startGameWithCountdown(START_TIMER_MS);
             }
         });
 
