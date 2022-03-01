@@ -123,6 +123,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/game_name_player2" />
 
+    <TextView
+        android:id="@+id/countdown_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/mediumText"
+        android:text="@string/Placeholder_number"
+        app:layout_constraintBottom_toTopOf="@id/game_question_player1"
+        app:layout_constraintEnd_toStartOf="@id/game_points_player1"
+        app:layout_constraintStart_toEndOf="@id/game_points_player2"
+        app:layout_constraintTop_toBottomOf="@id/game_question_player2"/>
+
     <Button
         style="@style/Speed_Quiz.Button.Filled"
         android:id="@+id/game_button_stop"

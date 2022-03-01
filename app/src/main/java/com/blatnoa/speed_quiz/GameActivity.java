@@ -27,6 +27,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView player1Question;
     private TextView player2Question;
     private TextView gameWinner;
+    private TextView countdownText;
     private Button player1AnswerButton;
     private Button player2AnswerButton;
     private Button stopGameButton;
@@ -36,6 +37,7 @@ public class GameActivity extends AppCompatActivity {
     private Bundle extras;
     private Runnable questionRunnable;
     private Runnable waitForNextQuestionRunnable;
+    private Runnable countdownRunnable;
     private Handler handler;
     private QuestionManager manager;
     private Question currentQuestion;
@@ -43,6 +45,7 @@ public class GameActivity extends AppCompatActivity {
     private int player1Score;
     private int player2Score;
     private int winRequirement;
+    private int time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,12 +69,14 @@ public class GameActivity extends AppCompatActivity {
         player2Question = findViewById(R.id.game_question_player2);
         player2Question.setText("");
         gameWinner = findViewById(R.id.game_winner);
+        countdownText = findViewById(R.id.countdown_text);
 
         player1AnswerButton = findViewById(R.id.game_button_player1);
         player1AnswerButton.setEnabled(false);
         player2AnswerButton = findViewById(R.id.game_button_player2);
         player2AnswerButton.setEnabled(false);
         stopGameButton = findViewById(R.id.game_button_stop);
+        stopGameButton.setVisibility(View.GONE);
         replayButton = findViewById(R.id.game_button_replay);
         menuButton = findViewById(R.id.game_button_menu);
     }
@@ -156,14 +161,35 @@ public class GameActivity extends AppCompatActivity {
         });
 
         // Start game
-        questionCycle();
+        startGameWithCountdown(START_TIMER_MS);
+    }
+
+    private void startGameWithCountdown(int countdownTime) {
+        handler = new Handler();
+
+        countdownRunnable = new Runnable() {
+            @Override
+            public void run() {
+                if (time <= START_TIMER_MS) {
+                    countdownText.setText(Integer.toString((START_TIMER_MS - time) / 1000));
+                    time += 1000;
+                    handler.postDelayed(countdownRunnable, 1000);
+                } else {
+                    countdownText.setVisibility(View.GONE);
+                    stopGameButton.setVisibility(View.VISIBLE);
+                    questionCycle();
+                }
+            }
+        };
+
+        handler.post(countdownRunnable);
     }
 
     /**
      * Set the anwser buttons enabled state
      * @param enabled Whether the buttons should be enabled or disabled
      */
-    public void buttonsSetEnabled(boolean enabled) {
+    private void buttonsSetEnabled(boolean enabled) {
         player1AnswerButton.setEnabled(enabled);
         player2AnswerButton.setEnabled(enabled);
     }
@@ -171,7 +197,7 @@ public class GameActivity extends AppCompatActivity {
     /**
      * Initialize everything needed for a new game
      */
-    public void gameInitialization() {
+    private void gameInitialization() {
         player1Score = 0;
         player2Score = 0;
 
@@ -180,6 +206,10 @@ public class GameActivity extends AppCompatActivity {
 
         player1ScoreText.setText("0");
         player2ScoreText.setText("0");
+
+        stopGameButton.setVisibility(View.GONE);
+        countdownText.setVisibility(View.VISIBLE);
+        time = 0;
 
         buttonsSetEnabled(false);
 
@@ -228,7 +258,7 @@ public class GameActivity extends AppCompatActivity {
             }
         };
 
-        handler.postDelayed(questionRunnable, START_TIMER_MS);
+        handler.postDelayed(questionRunnable,0);
 
     }
 
