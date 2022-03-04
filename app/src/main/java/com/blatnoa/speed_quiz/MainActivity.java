@@ -15,11 +15,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.Switch;
 
 import com.blatnoa.speed_quiz.Controllers.QuestionManager;
 import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.Slider;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -32,17 +32,20 @@ public class MainActivity extends AppCompatActivity {
     private Button confirmQuestionButton;
     private Button abandonQuestionButton;
     private Slider displayTimeSlider;
-    private EditText winRequirement;
-    private EditText questionText;
-    private SwitchCompat questionAnswer;
+    private EditText maxRoundsEdit;
+    private EditText winRequirementEdit;
+    private EditText questionTextEdit;
+    private SwitchCompat questionAnswerSwitch;
     private TextInputLayout player1InputLayout;
     private TextInputLayout player2InputLayout;
     private EditText player1Edit;
     private EditText player2Edit;
     ConstraintLayout settingsOverlay;
     ConstraintLayout addQuestionPopup;
+    RelativeLayout contextView;
 
     private final int BASE_WIN_REQUIREMENT = 5;
+    private final int BASE_MAX_ROUNDS = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +61,9 @@ public class MainActivity extends AppCompatActivity {
         addQuestionPopup = findViewById(R.id.popup_add_question);
         addQuestionPopup.setVisibility(View.GONE);
 
-        questionAnswer = findViewById(R.id.popup_question_answer_switch);
+        contextView = findViewById(R.id.main_layout);
+
+        questionAnswerSwitch = findViewById(R.id.popup_question_answer_switch);
 
         displayTimeSlider = findViewById(R.id.settings_display_time_slider);
         displayTimeSlider.setLabelFormatter(new LabelFormatter() {
@@ -68,9 +73,11 @@ public class MainActivity extends AppCompatActivity {
                 return Float.toString(value) + "s";
             }
         });
-        winRequirement = findViewById(R.id.settings_win_requirement_edit);
-        winRequirement.setText(Integer.toString(BASE_WIN_REQUIREMENT));
-        questionText = findViewById(R.id.popup_question_text_edit);
+        winRequirementEdit = findViewById(R.id.settings_win_requirement_edit);
+        winRequirementEdit.setText(Integer.toString(BASE_WIN_REQUIREMENT));
+        maxRoundsEdit = findViewById(R.id.settings_max_rounds_edit);
+        maxRoundsEdit.setText((Integer.toString(BASE_MAX_ROUNDS)));
+        questionTextEdit = findViewById(R.id.popup_question_text_edit);
 
         editPlayersButton = findViewById(R.id.main_button_edit_players);
         playButton = findViewById(R.id.main_button_play);
@@ -113,10 +120,20 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("Player1", player1Edit.getText().toString());
                     intent.putExtra("Player2", player2Edit.getText().toString());
                     intent.putExtra("DisplayTime", displayTimeSlider.getValue());
-                    intent.putExtra("WinRequirement", Integer.parseInt(winRequirement.getText().toString()));
+
+                    int winRequirement = Integer.parseInt(winRequirementEdit.getText().toString());
+                    if (winRequirement <= 0) {
+                        winRequirement = 5;
+                    }
+                    intent.putExtra("WinRequirement", winRequirement);
+
+                    int maxRounds = Integer.parseInt(maxRoundsEdit.getText().toString());
+                    if (maxRounds <= 0) {
+                        maxRounds = 5;
+                    }
+                    intent.putExtra("MaxRounds", maxRounds);
                     startActivity(intent);
                 } else {
-                    RelativeLayout contextView = findViewById(R.id.main_layout);
                     Snackbar.make(contextView, getString(R.string.player_error_message), Snackbar.LENGTH_SHORT).show();
                 }
             }
@@ -133,7 +150,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 QuestionManager qm = new QuestionManager(MainActivity.this);
-                qm.addQuestion(questionText.getText().toString(), questionAnswer.isChecked());
+
+                // Try adding question to the database
+                if (qm.addQuestion(questionTextEdit.getText().toString(), questionAnswerSwitch.isChecked())) {
+                    Snackbar.make(contextView, R.string.question_added_message, Snackbar.LENGTH_SHORT).show();
+                } else {
+                    Snackbar.make(contextView, R.string.question_error_message, Snackbar.LENGTH_SHORT).show();
+                }
                 addQuestionPopup.setVisibility(View.GONE);
             }
         });
@@ -141,8 +164,8 @@ public class MainActivity extends AppCompatActivity {
         abandonQuestionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                questionText.setText("");
-                questionAnswer.setChecked(false);
+                questionTextEdit.setText("");
+                questionAnswerSwitch.setChecked(false);
                 addQuestionPopup.setVisibility(View.GONE);
             }
         });

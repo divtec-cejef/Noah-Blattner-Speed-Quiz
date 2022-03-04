@@ -45,6 +45,8 @@ public class GameActivity extends AppCompatActivity {
     private int player1Score;
     private int player2Score;
     private int winRequirement;
+    private int round;
+    private int maxRounds;
     private int time;
 
     @Override
@@ -89,6 +91,7 @@ public class GameActivity extends AppCompatActivity {
         player2Name.setText(extras.getString("Player2"));
         questionTimeSeconds = extras.getFloat("DisplayTime");
         winRequirement = extras.getInt("WinRequirement");
+        maxRounds = extras.getInt("MaxRounds");
 
         gameInitialization();
 
@@ -210,6 +213,7 @@ public class GameActivity extends AppCompatActivity {
         stopGameButton.setVisibility(View.GONE);
         countdownText.setVisibility(View.VISIBLE);
         time = 0;
+        round = 0;
 
         buttonsSetEnabled(false);
 
@@ -241,8 +245,9 @@ public class GameActivity extends AppCompatActivity {
          questionRunnable = new Runnable() {
             @Override
             public void run() {
+                round++;
                     // If there are any questions left :
-                    if (manager.anyQuestionsRemaining()) {
+                    if (manager.anyQuestionsRemaining() && round <= maxRounds) {
                         // Get a random question
                         currentQuestion = manager.getRandomQuestion();
                         // Set question text

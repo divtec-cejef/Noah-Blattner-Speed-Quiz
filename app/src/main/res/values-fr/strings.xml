@@ -16,6 +16,8 @@
     <string name="edit_player1">Nom du joueur 1</string>
     <string name="edit_player2">Nom du joueur 2</string>
     <string name="player_error_message">Noms des joueurs ne peuvent pas être vide</string>
+    <string name="question_added_message">Votre question a été ajouté à la base de données</string>
+    <string name="question_error_message">Votre question ne pouvait pas être ajouté à la question</string>
 
     <!-- Jeu -->
     <string name="game_button_answer">C\'est vrai !</string>
@@ -33,7 +35,8 @@
     <string name="settings_app_night_mode">Mode nuit :</string>
     <string name="settings_game_settings">Paramètres de jeu</string>
     <string name="settings_win_requirement">Condition de victoire :</string>
-    <string name="settings_win_requirement_hint">Réponses correct</string>
+    <string name="settings_win_requirement_hint">N° de réponses correct pour gagner</string>
+    <string name="settings_max_rounds_hint">Tours maximals</string>
     <string name="settings_add_question">Ajouter une question :</string>
     <string name="settings_add_question_button_text">Clicker pour ajouter une question</string>
     <string name="settings_question_time">Temps d\'affichage des questions :</string>

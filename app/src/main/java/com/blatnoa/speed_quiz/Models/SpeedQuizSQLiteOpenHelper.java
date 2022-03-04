@@ -1,14 +1,13 @@
 package com.blatnoa.speed_quiz.Models;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class SpeedQuizSQLiteOpenHelper extends SQLiteOpenHelper {
     static String DB_NAME="SpeedQuiz.db";
     static int DB_VERSION=1;
-
-    private static int index = 10;
 
     public SpeedQuizSQLiteOpenHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -33,8 +32,28 @@ public class SpeedQuizSQLiteOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
 
-    public void addQuestionToQuiz(String questionText, boolean answer) {
-        index++;
-        getReadableDatabase().execSQL("INSERT INTO quiz VALUES(" + index + ",\"" + questionText + "\"," + (answer ? "1" : "0") + ")");
+    private int getNextIndex() {
+        Cursor cursor = getReadableDatabase().rawQuery("SELECT MAX(idQuiz) FROM quiz;", null);
+        cursor.moveToFirst();
+        int index = Integer.parseInt(cursor.getString(0));
+        cursor.close();
+        return index+1;
+    }
+
+    /**
+     * Add a question to the database
+     * @param questionText The text of the question
+     * @param answer The answer to the question
+     * @return If the question was added or not
+     */
+    public boolean addQuestionToQuiz(String questionText, boolean answer) {
+        int index = getNextIndex();
+        try {
+            getWritableDatabase().execSQL("INSERT INTO quiz VALUES(" + index + ",\"" + questionText + "\"," + (answer ? "1" : "0") + ")");
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 }

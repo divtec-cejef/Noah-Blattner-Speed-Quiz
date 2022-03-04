@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.blatnoa.speed_quiz.Models.Question;
 import com.blatnoa.speed_quiz.Models.SpeedQuizSQLiteOpenHelper;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -47,8 +48,11 @@ public class QuestionManager {
      * @param questionText The question's text
      * @param answer The question's answer
      */
-    public void addQuestion(String questionText, boolean answer) {
-        helper.addQuestionToQuiz(questionText, answer);
+    public boolean addQuestion(String questionText, boolean answer) {
+        if (helper.addQuestionToQuiz(questionText, answer)) {
+            return true;
+        }
+        return false;
     }
 
     /**

@@ -14,6 +14,8 @@
     <string name="edit_player1">Name of player 1</string>
     <string name="edit_player2">Name of player 2</string>
     <string name="player_error_message">Player names can\'t be empty</string>
+    <string name="question_added_message">Your question was successfully added to the database</string>
+    <string name="question_error_message">Your question couldn\'t be added to the database</string>
 
     <!-- Game -->
     <string name="game_button_answer">It\'s true !</string>
@@ -32,7 +34,8 @@
     <string name="settings_game_settings">Game settings</string>
     <string name="settings_question_time">Question display time :</string>
     <string name="settings_win_requirement">Win requirement :</string>
-    <string name="settings_win_requirement_hint">Correct answers</string>
+    <string name="settings_win_requirement_hint">N° of correct answers to win</string>
+    <string name="settings_max_rounds_hint">Max rounds</string>
     <string name="settings_add_question">Add a question :</string>
     <string name="settings_add_question_button_text">Click to add a question</string>
     <string name="setting_leave_settings">Leave settings</string>

@@ -162,12 +162,39 @@
             app:layout_constraintTop_toBottomOf="@id/settings_display_time" />
 
         <TextView
+            android:id="@+id/settings_max_rounds"
+            style="@style/Speed_Quiz.Settings.Option"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_max_rounds_hint"
+            app:layout_constraintTop_toBottomOf="@id/settings_display_time_slider" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/settings_max_rounds_edit_parent"
+            style="@style/Speed_Quiz.Edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/component_spacing"
+            android:hint="@string/settings_max_rounds_hint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/settings_max_rounds">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/settings_max_rounds_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="2" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
             android:id="@+id/settings_win_requirement"
             style="@style/Speed_Quiz.Settings.Option"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/settings_win_requirement"
-            app:layout_constraintTop_toBottomOf="@id/settings_display_time_slider" />
+            app:layout_constraintTop_toBottomOf="@id/settings_max_rounds_edit_parent"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/settings_win_requirement_edit_parent"
@@ -237,28 +264,28 @@
                 android:id="@+id/popup_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
                 android:paddingStart="@dimen/title_spacing"
                 android:paddingEnd="@dimen/title_spacing"
-                android:background="@color/colorPrimary"
                 android:text="@string/settings_add_question"
-                android:textSize="@dimen/text_h1"
                 android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="@dimen/text_h1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/popup_question_text_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/popup_question_text"
-                android:textSize="@dimen/text_h2"
-                android:textColor="@color/textColorPrimary"
-                android:textAlignment="center"
                 android:layout_margin="@dimen/component_spacing"
-                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/popup_question_text"
+                android:textAlignment="center"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/text_h2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/popup_title"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/popup_title" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/popup_question_text_edit_parent"
@@ -267,16 +294,15 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/component_spacing"
                 android:hint="@string/popup_question_text"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/popup_question_text_title">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/popup_question_text_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    />
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -284,14 +310,14 @@
                 android:id="@+id/popup_question_answer_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/popup_question_answer"
-                android:textSize="@dimen/text_h2"
-                android:textColor="@color/textColorPrimary"
-                android:textAlignment="center"
                 android:layout_margin="@dimen/component_spacing"
-                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/popup_question_answer"
+                android:textAlignment="center"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/text_h2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/popup_question_text_edit_parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/popup_question_text_edit_parent" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/popup_question_answer_switch"
@@ -300,31 +326,31 @@
                 android:layout_height="wrap_content"
                 android:checked="false"
                 android:text="@string/popup_question_answer"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/popup_question_answer_title" />
 
             <Button
                 android:id="@+id/popup_add_question_confirm_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/popup_confirm_question"
                 android:layout_margin="@dimen/component_spacing"
-                app:layout_constraintTop_toBottomOf="@id/popup_question_answer_switch"
-                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/popup_confirm_question"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/popup_question_answer_switch" />
 
             <Button
                 android:id="@+id/popup_exit_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/popup_exit"
                 android:layout_margin="@dimen/component_spacing"
-                app:layout_constraintTop_toBottomOf="@id/popup_add_question_confirm_button"
-                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/popup_exit"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/popup_add_question_confirm_button" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
