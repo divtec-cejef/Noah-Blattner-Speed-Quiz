@@ -13,6 +13,8 @@ public class SpeedQuizSQLiteOpenHelper extends SQLiteOpenHelper {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
+    private int maxIdBaseEntries;
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sqlCreateDatatableQuiz = "CREATE TABLE quiz(idQuiz INTEGER PRIMARY KEY, question TEXT, reponse INTEGER);";
@@ -27,11 +29,23 @@ public class SpeedQuizSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO quiz VALUES(8,\"L'atterisage lunaire à eu lieu en 1966.\",0)");
         db.execSQL("INSERT INTO quiz VALUES(9,\"AZERTY est un bon layout de clavier.\",0)");
         db.execSQL("INSERT INTO quiz VALUES(10,\"La première guerre mondial à durée de 1914 à 1918.\",1)");
+
+        Cursor cursor = db.rawQuery("SELECT MAX(idQuiz) FROM quiz;", null);
+        cursor.moveToFirst();
+        maxIdBaseEntries = Integer.parseInt(cursor.getString(0));
+        cursor.close();
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
 
+    public void deleteAllCustomEntries() {
+        getWritableDatabase().execSQL("DELETE FROM quiz WHERE idQuiz > 10");
+    }
+
+    /**
+     * @return The next free index in the database
+     */
     private int getNextIndex() {
         Cursor cursor = getReadableDatabase().rawQuery("SELECT MAX(idQuiz) FROM quiz;", null);
         cursor.moveToFirst();

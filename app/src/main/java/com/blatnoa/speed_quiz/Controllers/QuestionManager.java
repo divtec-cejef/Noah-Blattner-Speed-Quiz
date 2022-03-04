@@ -87,4 +87,8 @@ public class QuestionManager {
     public boolean isCorrectAnswer(Question question, int answer) {
         return question.getAnswer() == answer;
     }
+
+    public void deleteAllCustomEntries() {
+        helper.deleteAllCustomEntries();
+    }
 }

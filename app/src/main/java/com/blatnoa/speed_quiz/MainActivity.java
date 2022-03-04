@@ -2,6 +2,7 @@ package com.blatnoa.speed_quiz;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -13,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText maxRoundsEdit;
     private EditText winRequirementEdit;
     private EditText questionTextEdit;
+    private SwitchCompat nightMode;
     private SwitchCompat questionAnswerSwitch;
     private TextInputLayout player1InputLayout;
     private TextInputLayout player2InputLayout;
@@ -63,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         contextView = findViewById(R.id.main_layout);
 
+        nightMode = findViewById(R.id.settings_app_night_mode);
         questionAnswerSwitch = findViewById(R.id.popup_question_answer_switch);
 
         displayTimeSlider = findViewById(R.id.settings_display_time_slider);
@@ -176,6 +180,13 @@ public class MainActivity extends AppCompatActivity {
                 settingsOverlay.setVisibility(View.GONE);
             }
         });
+
+        nightMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                toggleNightMode(nightMode.isChecked());
+            }
+        });
     }
 
     @Override
@@ -192,12 +203,32 @@ public class MainActivity extends AppCompatActivity {
                 settingsOverlay.setVisibility(View.VISIBLE);
                 break;
             case R.id.main_action_night_mode:
+                toggleNightMode(!getNightModeIsToggled());
                 break;
             default:
                 super.onOptionsItemSelected(item);
         }
 
         return true;
+    }
+
+    /**
+     * @return Returns if the night mode is toogled
+     */
+    public boolean getNightModeIsToggled() {
+        return AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
+    }
+
+    /**
+     * Toggles the night mode on or off
+     * @param state True to turn on night mode, false to turn off.
+     */
+    private void toggleNightMode(boolean state) {
+        if (state) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
     }
 
 

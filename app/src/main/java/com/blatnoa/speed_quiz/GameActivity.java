@@ -140,7 +140,7 @@ public class GameActivity extends AppCompatActivity {
                 snackbar.setAction(R.string.game_confirm, new View.OnClickListener() {
                      @Override
                      public void onClick(View view) {
-                         finish();
+                         quitActivity();
                      }
                 });
 
@@ -159,12 +159,17 @@ public class GameActivity extends AppCompatActivity {
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                quitActivity();
             }
         });
 
         // Start game
         startGameWithCountdown(START_TIMER_MS);
+    }
+
+    private void quitActivity() {
+        manager.deleteAllCustomEntries();
+        finish();
     }
 
     private void startGameWithCountdown(int countdownTime) {
